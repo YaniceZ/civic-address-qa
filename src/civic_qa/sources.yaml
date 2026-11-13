@@ -1,0 +1,33 @@
+# Each source maps a public ArcGIS REST layer onto the standard schema in standardize.py.
+#
+# mode: components  the layer already splits the address; `fields` says which column holds what.
+# mode: parse       the layer has one address string; `full_address` names it, and the parser splits it.
+#                   `check_against` (optional) lists split columns used to measure parser accuracy.
+
+thunder_bay:
+  name: City of Thunder Bay civic addresses
+  province: ON
+  url: https://services5.arcgis.com/h9xShea49ZANgOtx/ArcGIS/rest/services/Municipal_Address_Feature_Layer/FeatureServer/0
+  id_field: OBJECTID
+  mode: parse
+  full_address: COMPLETE
+  hyphen_order: number-unit   # Thunder Bay writes 276-4 for number 276, unit 4
+  city_field: CITY
+  check_against:
+    house_number: ADDRESS_NUMBER
+    street_name: STREET
+    street_type: ROWTYPE
+
+west_kelowna:
+  name: City of West Kelowna civic addresses
+  province: BC
+  url: https://gis.westkelownacity.ca/arcgis/rest/services/Public/OpenData/FeatureServer/0
+  id_field: OBJECTID
+  mode: components
+  city: WEST KELOWNA
+  fields:
+    house_number: ADDR_NBR
+    unit: UNIT_NBR
+    street_name: NAME
+    street_type: TYPE
+    street_dir: PREFIX
