@@ -6,7 +6,7 @@
 
 thunder_bay:
   name: City of Thunder Bay civic addresses
-  province: ON
+  province: "ON"   # quoted: unquoted ON is the boolean True in YAML 1.1
   url: https://services5.arcgis.com/h9xShea49ZANgOtx/ArcGIS/rest/services/Municipal_Address_Feature_Layer/FeatureServer/0
   id_field: OBJECTID
   mode: parse
